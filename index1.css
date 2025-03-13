@@ -1,0 +1,78 @@
+.par_the_s {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+table {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 70px;
+    color: white;
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+tr {
+    width: 150px;
+    height: 150px;
+    background-color: #1e1e1e;
+    box-shadow: 3px 3px 17px 1px purple;
+    animation: backgroundchanger 5s infinite forwards alternate-reverse;
+}
+
+td {
+    width: 150px;
+    height: 150px;
+    box-shadow: -3px 3px 15px 1px #9400ff;
+    animation: backgroundchanger 5s infinite forwards alternate-reverse;
+}
+
+@keyframes backgroundchanger {
+    50% {
+        box-shadow: -3px 3px 20px 1px #9400ff;
+    }
+
+    75% {
+        box-shadow: -3px 3px 25px 1px #9400ff;
+    }
+
+    100% {
+        box-shadow: -3px 3px 30px 1px #9400ff;
+    }
+}
+
+
+.arrow {
+    display: flex;
+    justify-content: flex-start;
+    width: 40px;
+}
+
+.arrow_tail {
+    width: 2px;
+    height: 20px;
+    background-color: white;
+    transform: rotate(90deg) translate(0px, -30px);
+
+}
+
+.arrow_head {
+    width: 9px;
+    height: 9px;
+    background-color: #ffffff00;
+    border-left: solid 2px white;
+    border-bottom: solid 2px white;
+    transform: translate(11px, 4px) rotate(45deg);
+}
+
+
+.for-X {
+    text-shadow: 1px 1px 10px red;
+}
+
+.for-o {
+    text-shadow: 1px 1px 10px #000dff;
+}
