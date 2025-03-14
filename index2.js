@@ -16,9 +16,10 @@ button.addEventListener('click', function () {
 arrow.addEventListener('click', function () {
     first_div.style.display = "flex"
     second_div.style.display = "none"
+    window.location.reload(true)
 })
 
-//كتابة x o عند الضفط
+// كتابة x o عند الضفط
 
 td.forEach(function (td) {
     td.classList.add("can_write")
@@ -28,9 +29,19 @@ td.forEach(function (td) {
                 let after = xoArray.shift()
                 td.textContent = after
                 td.classList.remove("can_write")
+                if (td.innerText === "X") {
+                    td.classList.add("for-X")
+                } else if (td.innerText === "O") {
+                    td.classList.add("for-o")
+                }
             }
-
-
         }
     })
 })
+
+
+
+
+
+
+
