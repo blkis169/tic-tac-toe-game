@@ -7,6 +7,8 @@ let xoArray = ["X", "O", "X", "O", "X", "O", "X", "O", "X"]
 
 
 
+
+
 //التحويل بين الصفحتين 
 button.addEventListener('click', function () {
     first_div.style.display = "none"
@@ -21,23 +23,80 @@ arrow.addEventListener('click', function () {
 
 // كتابة x o عند الضفط
 
-td.forEach(function (td) {
-    td.classList.add("can_write")
-    td.addEventListener('click', function () {
-        if (xoArray.length > 0) {
-            if (td.classList.contains("can_write")) {
-                let after = xoArray.shift()
-                td.textContent = after
-                td.classList.remove("can_write")
-                if (td.innerText === "X") {
-                    td.classList.add("for-X")
-                } else if (td.innerText === "O") {
-                    td.classList.add("for-o")
-                }
+
+
+
+td.forEach(function (tl) {
+    tl.classList.add("can_write")
+    tl.addEventListener('click', function () {
+        if (tl.classList.contains("can_write")) {
+            let after = xoArray.shift()
+            tl.textContent = after
+            if (tl.innerText === "X") {
+                tl.classList.add("for-X")
+            } else if (tl.innerText === "O") {
+                tl.classList.add("for-o")
+            }
+
+            if (tl.innerText === "X") {
+                tl.classList.add("for-X")
+            } else if (tl.innerText === "O") {
+                tl.classList.add("for-o")
             }
         }
+        tl.classList.remove("can_write")
+
+
     })
 })
+
+// function check() {
+//     if (td[0].classList.contains("for-X") || td[0].classList.contains("for-o")) {
+//         console.log("true")
+
+//     } else {
+//         console.log("no")
+//     }
+
+// }
+// check()
+
+let count = 0
+
+
+
+td.forEach(function (el) {
+    if (el.classList.contains("can_write")) {
+        el.addEventListener('click', function () {
+            if (el.classList.contains("for-X") || el.classList.contains("for-o")) {
+                count++
+            }
+            console.log(count)
+            let first = new Promise((rev, reg) => {
+                if (count >= 5) {
+                    rev("won")
+                }
+                else {
+                    reg("lose");
+                }
+
+            }
+            )
+            first.then(
+                (final) => console.log(`you${final}`),
+                (yy) => console.log(`you${yy}`)
+            )
+        })
+
+
+
+    }
+})
+
+
+
+
+
 
 
 
