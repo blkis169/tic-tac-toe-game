@@ -6,6 +6,19 @@ let td = document.querySelectorAll("td")
 let xoArray = ["X", "O", "X", "O", "X", "O", "X", "O", "X"]
 let endgame = document.querySelector(".the-end");
 let finalbut = document.querySelector(".final-button")
+let endgamediv = document.querySelector(".the-end div");
+let change_mood_divs = document.querySelectorAll(".chnge_Mood div");
+
+change_mood_divs[0].addEventListener('click', function (el) {
+    change_mood_divs[0].style.backgroundColor = "aliceblue";
+    change_mood_divs[1].style.backgroundColor = "rgba(240, 248, 255, 0)";
+})
+
+
+change_mood_divs[1].addEventListener('click', function (el) {
+    change_mood_divs[1].style.backgroundColor = "aliceblue";
+    change_mood_divs[0].style.backgroundColor = "rgba(240, 248, 255, 0)";
+})
 
 
 
@@ -13,6 +26,7 @@ let finalbut = document.querySelector(".final-button")
 //التحويل بين الصفحتين 
 finalbut.addEventListener('click', function () {
     window.location.reload(true)
+
 })
 button.addEventListener('click', function () {
     first_div.style.display = "none"
@@ -54,17 +68,6 @@ td.forEach(function (tl) {
     })
 })
 
-// function check() {
-//     if (td[0].classList.contains("for-X") || td[0].classList.contains("for-o")) {
-//         console.log("true")
-
-//     } else {
-//         console.log("no")
-//     }
-
-// }
-// check()
-
 let count = 0
 
 
@@ -92,21 +95,24 @@ td.forEach(function (el) {
 
                     rev(
                         endgame.style.display = "flex",
+                        endgamediv.textContent = "you won :)",
                         td.forEach(function (el) {
                             el.classList.remove("can_write")
                         })
                     )
 
                 }
-                else {
-                    reg("rev")
+                else if ([...td].every(el => !el.classList.contains("can_write"))) {
+                    reg(endgame.style.display = "flex",
+                        endgamediv.textContent = "try agin :("
+                    ); // تعادل لأن جميع الخلايا ممتلئة
                 }
 
             }
             )
             first.then(
                 (final) => (final),
-                (yy) => console.log(`you${yy}`)
+                (yy) => console.log(yy)
             )
         })
 

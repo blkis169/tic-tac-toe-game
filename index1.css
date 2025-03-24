@@ -116,3 +116,55 @@ td {
     box-shadow: 0px 0px 0px 0px;
 
 }
+
+.top-of-the-table {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 312px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.chnge_Mood {
+    width: 100px;
+    height: 30px;
+    background-color: #ffffff42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: solid 1px #9400ff;
+    box-shadow: 0px 0px 7px 4px #9400ff;
+}
+
+.chnge_Mood div {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+img {
+    width: 30px;
+}
+
+.with-friend {
+    border-right: solid 1px;
+
+}
+
+.with-computer {
+    border-left: solid 1px;
+}
+
+.chnge_Mood div:hover {
+    animation: hovrenig 0.5s 1 forwards;
+}
+
+@keyframes hovrenig {
+    100% {
+        background-color: rgb(240, 248, 255);
+    }
+}
