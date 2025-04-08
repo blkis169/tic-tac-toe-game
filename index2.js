@@ -9,8 +9,10 @@ let finalbut = document.querySelector(".final-button")
 let endgamediv = document.querySelector(".the-end div");
 let withfriend = document.querySelector(".with-friend");
 let withcomp = document.querySelector(".with-computer");
+let choose_mood_alert = document.querySelector(".choose_mood_alert")
 
 
+//عند الضغط على فريند مود 
 const friend_mood = function (el) {
     withfriend.style.backgroundColor = "aliceblue";
     withcomp.style.backgroundColor = "rgba(240, 248, 255, 0)";
@@ -21,8 +23,11 @@ const friend_mood = function (el) {
 }
 
 withfriend.addEventListener('click', friend_mood)
+//*******************************************************************************//
 
 
+
+//عند الضغط على كمبيوتر مود
 const computer_mood = function (el) {
     withcomp.style.backgroundColor = "aliceblue";
     withfriend.style.backgroundColor = "rgba(240, 248, 255, 0)";
@@ -33,68 +38,59 @@ const computer_mood = function (el) {
 
 withcomp.addEventListener('click', computer_mood)
 
+//*******************************************************************************//
 
 
 
-//التحويل بين الصفحتين 
+
+//عند الانتهاء من الجولة 
 finalbut.addEventListener('click', function () {
     window.location.reload(true)
 
 })
+//*******************************************************************************//
+
+//زر البداية 
 button.addEventListener('click', function () {
     first_div.style.display = "none"
     second_div.style.display = "grid"
 })
 
+//*******************************************************************************//
+
+
+//للرجوع لصفحة البداية 
 arrow.addEventListener('click', function () {
     first_div.style.display = "flex"
     second_div.style.display = "none"
     window.location.reload(true)
 })
 
-
-
-
-// عند الضفط
-let count = 0
-withfriend.addEventListener('click', function () {
-    const mood_promise = new Promise((rev, rej) => {
-
-
-        if (withfriend.classList.contains("mood-on")) {
-            withcomp.removeEventListener('click', computer_mood)
-            rev(td.forEach(function (tl) {
+// للسماح بالكتابة بعد التأكد من وضع المود
+ function alow_writing(){
+    td.forEach(function (tl) {
                 tl.classList.add("can_write")
+                //اذا كان عنصر الطاولة يحتوي على كلاس يمكن الكتابة 
                 tl.addEventListener('click', function () {
                     if (tl.classList.contains("can_write")) {
                         let after = xoArray.shift()
                         tl.textContent = after
+                        //شرط لتعين لون وشكل كل من الاكس والاو
                         if (tl.innerText === "X") {
                             tl.classList.add("for-X")
                         } else if (tl.innerText === "O") {
                             tl.classList.add("for-o")
                         }
-
-                        if (tl.innerText === "X") {
-                            tl.classList.add("for-X")
-                        } else if (tl.innerText === "O") {
-                            tl.classList.add("for-o")
-                        }
-                    }
+}
                     tl.classList.remove("can_write")
-
-
-
-
-
-
-
-                })
-            })
+                }
             )
+            }
+        )} 
+//***********************************************//
 
-
-            td.forEach(function (el) {
+function winning_or_losing(){
+      td.forEach(function (el) {
                 if (el.classList.contains("can_write")) {
                     el.addEventListener('click', function () {
                         if (el.classList.contains("for-X") || el.classList.contains("for-o")) {
@@ -132,6 +128,9 @@ withfriend.addEventListener('click', function () {
 
                         }
                         )
+
+
+                        
                         first.then(
                             (final) => (final),
                             (yy) => console.log(yy)
@@ -144,17 +143,38 @@ withfriend.addEventListener('click', function () {
 
                 }
             })
+}
+
+//*******************************************************************************//
+
+let count = 0
+
+//والبدء باللعب عند الضغط على ال فريند مود
+withfriend.addEventListener('click', function () {
+    const mood_promise = new Promise((rev, rej) => {
+
+       //شرط للتأكد ان فريند مود هو المختار
+        if (withfriend.classList.contains("mood-on")) {
+            withcomp.removeEventListener('click', computer_mood)
+            //في حال كان التأكد صح يمكن الكتابة في الطاولة
+            rev(alow_writing())
+            winning_or_losing()
         } else {
             rej("No")
         }
     })
-
-
-
-
     mood_promise.then(
         (rev) => (rev),
         (rej) => console.log(rej)
     )
-
 })
+
+//*******************************************************************************//
+
+function conctbar(){
+    if (!withcomp.classList.contains("mood-on")&& !withfriend.classList.contains("mood-on")){
+      choose_mood_alert.textContent = "choose mood first"
+    }
+}
+
+conctbar()
