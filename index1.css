@@ -74,11 +74,14 @@ td {
 
 .for-X {
     text-shadow: 1px 1px 10px red;
+
 }
 
 .for-o {
     text-shadow: 1px 1px 10px #000dff;
-}
+
+    }
+
 
 .the-end {
     width: 400px;
@@ -189,4 +192,10 @@ img {
     justify-content: center;
     align-items: center;
     letter-spacing: 1px;
+}
+
+@keyframes alert {
+    100%{
+        transform: translate(74px, 10px) scale(0.5);
+    }
 }

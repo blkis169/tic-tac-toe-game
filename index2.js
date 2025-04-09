@@ -60,11 +60,13 @@ button.addEventListener('click', function () {
 
 
 //للرجوع لصفحة البداية 
-arrow.addEventListener('click', function () {
+const go_back_to_home_page =  function () {
     first_div.style.display = "flex"
     second_div.style.display = "none"
     window.location.reload(true)
-})
+}
+
+arrow.addEventListener('click',go_back_to_home_page)
 
 // للسماح بالكتابة بعد التأكد من وضع المود
  function alow_writing(){
@@ -112,6 +114,7 @@ function winning_or_losing(){
                             ) {
 
                                 rev(
+                                    arrow.removeEventListener('click',go_back_to_home_page),
                                     endgame.style.display = "flex",
                                     endgamediv.textContent = "you won :)",
                                     td.forEach(function (el) {
@@ -121,7 +124,9 @@ function winning_or_losing(){
 
                             }
                             else if ([...td].every(el => !el.classList.contains("can_write"))) {
-                                reg(endgame.style.display = "flex",
+                                reg(
+                                    arrow.removeEventListener('click',go_back_to_home_page),
+                                    endgame.style.display = "flex",
                                     endgamediv.textContent = "try agin :("
                                 ); // تعادل لأن جميع الخلايا ممتلئة
                             }
@@ -156,8 +161,9 @@ withfriend.addEventListener('click', function () {
        //شرط للتأكد ان فريند مود هو المختار
         if (withfriend.classList.contains("mood-on")) {
             withcomp.removeEventListener('click', computer_mood)
+
             //في حال كان التأكد صح يمكن الكتابة في الطاولة
-            rev(alow_writing())
+            rev(alow_writing(),conctbar_friend_mood())
             winning_or_losing()
         } else {
             rej("No")
@@ -171,10 +177,33 @@ withfriend.addEventListener('click', function () {
 
 //*******************************************************************************//
 
-function conctbar(){
+function conctbar_no_mood(){
     if (!withcomp.classList.contains("mood-on")&& !withfriend.classList.contains("mood-on")){
-      choose_mood_alert.textContent = "choose mood first"
-    }
+      choose_mood_alert.textContent = "choose mood first";
+      choose_mood_alert.style. animation = "alert infinite 1s alternate-reverse"}
+    
+}
+conctbar_no_mood()
+
+function conctbar_friend_mood(){
+    
+      choose_mood_alert.textContent = "with friend";
+      choose_mood_alert.style.border = " solid 2px rgb(234, 255, 4)"
+      choose_mood_alert.style.boxShadow = " 0px 0px 15px 5px rgb(232, 255, 29)"
+      choose_mood_alert.style.color = " rgb(232, 255, 29)"
+      choose_mood_alert.style. animation = "none"
 }
 
-conctbar()
+
+function conctbar_computer_mood(){
+    
+      choose_mood_alert.textContent = "with friend";
+      choose_mood_alert.style.border = " solid 2px rgb(1, 33, 241)"
+    
+}
+
+
+
+
+
+
