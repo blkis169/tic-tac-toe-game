@@ -1,4 +1,4 @@
-let button = document.querySelector(".first-button");
+ let button = document.querySelector(".first-button");
 let first_div = document.querySelector(".par");
 let second_div = document.querySelector(".par_the_s")
 let arrow = document.querySelector(".arrow");
@@ -10,6 +10,9 @@ let endgamediv = document.querySelector(".the-end div");
 let withfriend = document.querySelector(".with-friend");
 let withcomp = document.querySelector(".with-computer");
 let choose_mood_alert = document.querySelector(".choose_mood_alert")
+let table = document.querySelector("table")
+
+
 
 
 //عند الضغط على فريند مود 
@@ -38,6 +41,8 @@ const computer_mood = function (el) {
 
 withcomp.addEventListener('click', computer_mood)
 
+
+
 //*******************************************************************************//
 
 
@@ -57,6 +62,7 @@ button.addEventListener('click', function () {
 })
 
 //*******************************************************************************//
+
 
 
 //للرجوع لصفحة البداية 
@@ -80,8 +86,13 @@ arrow.addEventListener('click',go_back_to_home_page)
                         //شرط لتعين لون وشكل كل من الاكس والاو
                         if (tl.innerText === "X") {
                             tl.classList.add("for-X")
+                            table.classList.add("chngecolore_red")
+                            table.classList.remove("chngecolore_blue")
+                            
                         } else if (tl.innerText === "O") {
                             tl.classList.add("for-o")
+                            table.classList.add("chngecolore_blue")
+                            table.classList.remove("chngecolore_red")
                         }
 }
                     tl.classList.remove("can_write")
@@ -179,8 +190,8 @@ withfriend.addEventListener('click', function () {
 
 function conctbar_no_mood(){
     if (!withcomp.classList.contains("mood-on")&& !withfriend.classList.contains("mood-on")){
-      choose_mood_alert.textContent = "choose mood first";
-      choose_mood_alert.style. animation = "alert infinite 1s alternate-reverse"}
+    choose_mood_alert.textContent = "choose mood first";
+    choose_mood_alert.style. animation = "alert infinite 1s alternate-reverse"}
     
 }
 conctbar_no_mood()
@@ -197,10 +208,15 @@ function conctbar_friend_mood(){
 
 function conctbar_computer_mood(){
     
-      choose_mood_alert.textContent = "with friend";
-      choose_mood_alert.style.border = " solid 2px rgb(1, 33, 241)"
+      choose_mood_alert.textContent = "with computer";
+      choose_mood_alert.style.border = " solid 2px rgb(245, 4, 4)"
+       choose_mood_alert.style.border = " solid 2px rgb(245, 4, 4)"
+      choose_mood_alert.style.boxShadow = " 0px 0px 15px 5px rgb(245, 4, 4)"
+      choose_mood_alert.style.color = " rgb(245, 4, 4)"
+      choose_mood_alert.style. animation = "none"
     
 }
+
 
 
 

@@ -22,29 +22,11 @@ tr {
     width: 150px;
     height: 150px;
     background-color: #1e1e1e;
-    box-shadow: 3px 3px 17px 1px purple;
-    animation: backgroundchanger 5s infinite forwards alternate-reverse;
 }
 
 td {
     width: 150px;
     height: 150px;
-    box-shadow: -3px 3px 15px 1px #9400ff;
-    animation: backgroundchanger 5s infinite forwards alternate-reverse;
-}
-
-@keyframes backgroundchanger {
-    50% {
-        box-shadow: -3px 3px 20px 1px #9400ff;
-    }
-
-    75% {
-        box-shadow: -3px 3px 25px 1px #9400ff;
-    }
-
-    100% {
-        box-shadow: -3px 3px 30px 1px #9400ff;
-    }
 }
 
 
@@ -84,27 +66,57 @@ td {
 
 
 .the-end {
-    width: 400px;
+width: 400px;
     height: 200px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #cc87fd;
-    border: solid #35004f 2px;
+    background-color: rgb(164, 238, 238);
+    border: solid #a4eeee 2px;
     display: none;
-
     justify-content: center;
     align-items: center;
     font-size: 54px;
     font-family: "Audiowide", sans-serif;
     font-weight: 400;
     font-style: normal;
-    box-shadow: 10px 10px 11px 1px;
+    box-shadow: 0px 0px 16px 15px #a4eeee;
     text-shadow: 5px 5px 12px;
     flex-direction: column;
     gap: 20px;
+    animation: theend 10s infinite alternate-reverse;
 }
+
+@keyframes theend {
+    25%{
+    background-color: rgb(245, 50, 255);
+    border: solid rgb(245, 50, 255) 2px;
+    box-shadow: 0px 0px 16px 15px rgb(245, 50, 255);
+
+    }
+
+    50%{
+        background-color: rgb(87, 255, 154);
+            border: solid rgb(87, 255, 154) 2px;
+            box-shadow: 0px 0px 16px 15px rgb(87, 255, 154);
+
+    }
+
+    75%{
+background-color: rgb(255, 36, 40);
+    border: solid rgb(255, 36, 40) 2px;
+    box-shadow: 0px 0px 16px 15px rgb(255, 36, 40);
+    }
+
+    100%{
+background-color: rgb(222, 36, 255);
+    border: solid rgb(222, 36, 255) 2px;
+    box-shadow: 0px 0px 16px 15px rgb(222, 36, 255);
+    }
+}
+
+
 
 .final-button {
     width: 100px;
@@ -198,4 +210,27 @@ img {
     100%{
         transform: translate(74px, 10px) scale(0.5);
     }
+}
+
+@keyframes chngecolore_red {
+  100%{
+background-color: rgb(234, 1, 1);
+    box-shadow: rgb(255, 29, 29) 0px 0px 15px 5px;
+  }  
+}                                                            
+
+@keyframes chngecolore_blue {
+    100%{
+background-color: rgb(16, 1, 234);
+    box-shadow: rgb(44, 29, 255) 0px 0px 15px 5px;
+    }
+    
+}
+
+.chngecolore_red{
+animation: chngecolore_red  2s forwards 1  ;
+}
+
+.chngecolore_blue{
+animation: chngecolore_blue 1 2s forwards ;
 }
